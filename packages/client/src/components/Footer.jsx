@@ -1,0 +1,24 @@
+import React from "react";
+import { FaSlackHash } from "react-icons/fa";
+import { MdCopyright } from "react-icons/md";
+
+function Footer() {
+    const footerYear = new Date().getFullYear();
+    return (
+        <footer className="attribution  bg-gray-700 text-primary-content">
+            <FaSlackHash className="text-9xl mx-auto" />
+            <p>
+                Coded by{" "}
+                <a
+                    href="https://github.com/olamide203"
+                    className="after:bg-gray-300"
+                >
+                    Olamide Atitebi.
+                </a>{" "}
+                <MdCopyright className="inline text-2xl" /> {footerYear}
+            </p>
+        </footer>
+    );
+}
+
+export default Footer;

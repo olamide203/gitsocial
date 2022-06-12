@@ -1,0 +1,45 @@
+[
+    {
+        "title": "dashboard",
+        "icon": "MdDashboard",
+        "path": "/dashboard"
+    },
+    {
+        "title": "repositories",
+        "icon": "ImBooks",
+        "children": [
+            {
+                "title": "your repositories",
+                "icon": "RiGitRepositoryLine",
+                "path": "/repos/personal"
+            },
+            {
+                "title": "Starred",
+                "icon": "AiOutlineStar",
+                "path": "/repos/starred"
+            }
+        ]
+    },
+    {
+        "title": "people",
+        "icon": "BsPeople",
+        "path": "/people",
+        "children": [
+            {
+                "title": "followers",
+                "icon": "BsPeople",
+                "path": "/people/followers"
+            },
+            {
+                "title": "following",
+                "icon": "BsPeople",
+                "path": "/people/following"
+            }
+        ]
+    },
+    {
+        "title": "search",
+        "icon": "BsSearch",
+        "path": "/search"
+    }
+]
