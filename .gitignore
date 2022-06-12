@@ -18,6 +18,9 @@ packages/backend/public/
 packages/backend/uploads/
 config.env
 
+.pnp.cjs
+.pnp.loadr.mjs
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
