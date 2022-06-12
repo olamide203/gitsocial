@@ -8,7 +8,7 @@
         "packages/*"
     ],
     "scripts": {
-        "dev:server": "yarn workspace @gittz/server dev",
+        "dev:server": "yarn workspace @gittz/backend dev",
         "dev:client": "yarn workspace @gittz/client dev",
         "build:client": "yarn workspace @gittz/client build",
         "build:css": "yarn workspace @gittz/client css",

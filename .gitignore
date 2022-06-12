@@ -19,7 +19,7 @@ packages/backend/uploads/
 config.env
 
 .pnp.cjs
-.pnp.loadr.mjs
+.pnp.loader.mjs
 
 # Editor directories and files
 .vscode/*
