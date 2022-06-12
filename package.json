@@ -1,17 +1,4 @@
 {
-    "name": "gittz",
-    "packageManager": "yarn@3.2.1",
-    "version": "1.0.0",
-    "license": "MIT",
-    "private": true,
-    "workspaces": [
-        "packages/*"
-    ],
-    "scripts": {
-        "dev:server": "yarn workspace @gittz/backend dev",
-        "dev:client": "yarn workspace @gittz/client dev",
-        "build:client": "yarn workspace @gittz/client build",
-        "build:css": "yarn workspace @gittz/client css",
-        "start": "yarn workspace @whatsapp-clone/server start"
-    }
+  "name": "gittz",
+  "packageManager": "yarn@3.2.1"
 }
