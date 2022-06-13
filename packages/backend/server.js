@@ -12,7 +12,7 @@ const errorHandler = require("./middlewares/error");
 // const connectDB = require("./config/db");
 
 // configure evironment variables
-// require("dotenv").config({ path: "./config/config.env" });
+require("dotenv").config({ path: "./config/config.env" });
 
 // load routers
 const indexRouter = require("./routes/index");
@@ -76,12 +76,11 @@ app.set("trust proxy", 1);
 // connectDB(process.env.MONGODB_URI);
 
 // listen on port
-const server = app.listen(
-  process.env.PORT,
+const server = app.listen(process.env.PORT, () => {
   console.log(
-    `sever running in ${process.env.NODE_ENV} mode on port ${process.env.PORT}`
-  )
-);
+    `sever running in ${process.env.NODE_ENV} mode on ${process.env.SERVER_URL}`
+  );
+});
 
 // take care of unhandled promise rejections
 process.on("unhandledRejection", (err, promise) => {

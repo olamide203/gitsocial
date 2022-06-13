@@ -18,8 +18,8 @@ packages/backend/public/
 packages/backend/uploads/
 config.env
 
-.pnp.cjs
-.pnp.loader.mjs
+.pnp.*
+.yarn/*
 
 # Editor directories and files
 .vscode/*
@@ -32,10 +32,3 @@ config.env
 *.sln
 *.sw?
 
-.pnp.*
-!.yarn/cache
-!.yarn/unplugged
-!.yarn/sdks
-.yarn/install-state.gz
-
-.yarn/cache

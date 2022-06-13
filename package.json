@@ -6,10 +6,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "engines": {
-    "node": "16.x",
-    "yarn": "3.x"
-  },
   "scripts": {
     "dev:server": "yarn workspace @gittz/backend dev",
     "dev:client": "yarn workspace @gittz/client dev",
