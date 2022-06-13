@@ -24,7 +24,6 @@ config.env
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.yarn
 .idea
 .DS_Store
 *.suo
@@ -34,9 +33,9 @@ config.env
 *.sw?
 
 .pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
+!.yarn/cache
+!.yarn/unplugged
 !.yarn/sdks
-!.yarn/versions
+.yarn/install-state.gz
+
+.yarn/cache
