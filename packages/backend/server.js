@@ -12,7 +12,7 @@ const errorHandler = require("./middlewares/error");
 // const connectDB = require("./config/db");
 
 // configure evironment variables
-// require("dotenv").config({ path: "./config/config.env" });
+require("dotenv").config({ path: "./config/config.env" });
 
 // load routers
 const indexRouter = require("./routes/index");
@@ -40,10 +40,10 @@ app.use(xss());
 
 // rate limiting
 const limiter = rateLimit({
-    windowMs: 5 * 60 * 1000, // 5 minutes
-    max: 150, //Limit each IP to 100 requests per `window`
-    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+  windowMs: 5 * 60 * 1000, // 5 minutes
+  max: 150, //Limit each IP to 100 requests per `window`
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
 app.use(limiter);
@@ -59,7 +59,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Dev logging middleware
 if (process.env.NODE_ENV === "development") {
-    app.use(morgan("dev"));
+  app.use(morgan("dev"));
 }
 
 // load routers as middlewares
@@ -77,17 +77,17 @@ app.set("trust proxy", 1);
 
 // listen on port
 const server = app.listen(
-    process.env.PORT,
-    console.log(
-        `sever running in ${process.env.NODE_ENV} mode on port ${process.env.PORT}`
-    )
+  process.env.PORT,
+  console.log(
+    `sever running in ${process.env.NODE_ENV} mode on port ${process.env.PORT}`
+  )
 );
 
 // take care of unhandled promise rejections
 process.on("unhandledRejection", (err, promise) => {
-    console.log(`Error: ${err.message}`);
-    // close server and exit process
-    server.close(() => {
-        process.exit(1);
-    });
+  console.log(`Error: ${err.message}`);
+  // close server and exit process
+  server.close(() => {
+    process.exit(1);
+  });
 });
