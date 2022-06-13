@@ -1,0 +1,8 @@
+*
+!./package.json
+!./packages/backend/package.json
+
+
+!./packages/backend/ 
+
+./packages/backend/config
