@@ -3302,6 +3302,8 @@ __metadata:
 "gittz@workspace:.":
   version: 0.0.0-use.local
   resolution: "gittz@workspace:."
+  dependencies:
+    postcss: ^8.4.14
   languageName: unknown
   linkType: soft
 
