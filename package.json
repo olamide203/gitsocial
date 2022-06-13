@@ -11,7 +11,7 @@
     "dev:client": "yarn workspace @gittz/client dev",
     "build:client": "yarn workspace @gittz/client build",
     "build:css": "yarn workspace @gittz/client css",
-    "start": "yarn workspace @whatsapp-clone/server start"
+    "start": "yarn workspace @gittz/backend start"
   },
   "dependencies": {
     "postcss": "^8.4.14"
