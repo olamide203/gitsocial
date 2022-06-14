@@ -1,2 +1,2 @@
-server.js merge=ours
-config.env merge=ours
+packages/backend/server.js merge=ours
+packages/backend/config.env merge=ours
