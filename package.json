@@ -11,6 +11,7 @@
     "dev:client": "yarn workspace @gittz/client dev",
     "build:client": "yarn workspace @gittz/client build",
     "build:css": "yarn workspace @gittz/client css",
-    "start": "yarn workspace @gittz/backend start"
+    "start": "yarn workspace @gittz/backend start",
+    "dev": "yarn run dev:server & yarn run dev:client & yarn build:css"
   }
 }
