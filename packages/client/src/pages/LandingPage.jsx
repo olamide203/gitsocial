@@ -94,7 +94,7 @@ function LandingPage() {
           <div className="flex flex-col gap-5 self-center justify-self-center align-self-center col-span-5 lg:col-span-3 max-w-lg">
             <div className="">
               <Accordion
-                heading="Autogenerate tweets"
+                heading="Share tweets"
                 content="gittz automatically generates the body of your tweets based on the description and topics of your github repositories, saving you time while still allowing you to edit the content if necessary."
               />
             </div>
