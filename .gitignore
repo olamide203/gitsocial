@@ -31,4 +31,3 @@ config.env
 *.njsproj
 *.sln
 *.sw?
-
