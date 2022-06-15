@@ -23,6 +23,8 @@
     "prop-types": "^15.8.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-github-calendar": "^3.3.1",
+    "react-github-calender": "^1.1.0",
     "react-helmet-async": "^1.3.0",
     "react-icon": "^1.0.0",
     "react-icons": "^4.3.1",
@@ -30,6 +32,7 @@
     "react-loading-skeleton": "^3.1.0",
     "react-paginate": "^8.1.3",
     "react-router-dom": "^6.3.0",
+    "react-tooltip": "^4.2.21",
     "swr": "^1.3.0"
   },
   "devDependencies": {

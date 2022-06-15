@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { MdLocationPin } from "react-icons/md";
 import { FaGithub, FaTwitter } from "react-icons/fa";
 import { BsPeople } from "react-icons/bs";
 import { ImBooks } from "react-icons/im";
-import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import GithubCalender from "react-github-calendar";
+import ReactTooltip from "react-tooltip";
 import { AiOutlineStar } from "react-icons/ai";
 import { RiBuilding2Line } from "react-icons/ri";
 import StatItem from "../components/Dashboard/StatItem";
@@ -11,6 +12,7 @@ import useUser from "../Hooks/useUser";
 
 function Dashboard() {
   const { user } = useUser();
+  const [tooltip, showTooltip] = useState(false);
   const profile = user.data;
   return (
     <div className=" text-white dashboard h-screen w-full overflow-y-scroll">
@@ -68,14 +70,32 @@ function Dashboard() {
           <StatItem
             icon={<RiBuilding2Line className="text-4xl text-blue-600" />}
             value={profile.organizations}
-            title="organizations"
+            title="orgs"
+          />
+        </div>
+        <div
+          className="col-span-2 lg:grid items-center justify-center p-10 bg-neutral rounded-xl max-w-[66rem] justify-self-center font-sans hide "
+          onMouseEnter={() => showTooltip(true)}
+          onMouseLeave={() => {
+            showTooltip(false);
+            setTimeout(() => showTooltip(true), 50);
+          }}
+        >
+          <GithubCalender
+            username={profile.login}
+            year={new Date().getFullYear()}
+            children={tooltip && <ReactTooltip html eventOff="click" />}
+            theme={{
+              level0: "#d1d5db",
+              level1: "#60a5fa",
+              level2: "#3b82f6",
+              level3: "#2563eb",
+              level4: "#1e40af",
+            }}
+            blockSize={14}
           />
         </div>
       </div>
-      <img
-        src={`https://ghchart.rshah.org/075985/${profile.login}`}
-        alt="hello"
-      ></img>
     </div>
   );
 }
