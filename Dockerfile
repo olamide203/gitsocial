@@ -12,6 +12,7 @@ COPY ./packages/backend/package.json ./packages/backend/
 RUN corepack enable
 RUN yarn set version stable
 RUN yarn plugin import workspace-tools
+RUN yarn config set httpRetry 10
 RUN yarn workspaces focus --all --production
 
 # Bundle app source
