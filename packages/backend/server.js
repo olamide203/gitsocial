@@ -12,7 +12,7 @@ const errorHandler = require("./middlewares/error");
 // const connectDB = require("./config/db");
 
 // configure evironment variables
-// require("dotenv").config({ path: "./config/config.env" });
+require("dotenv").config({ path: "./config/config.env" });
 
 // load routers
 const indexRouter = require("./routes/index");
