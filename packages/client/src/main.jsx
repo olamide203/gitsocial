@@ -6,17 +6,4 @@ import "../dist/index.css";
 const rootElement = document.getElementById("root");
 const root = ReactDOM.createRoot(rootElement);
 
-if (rootElement.hasChildNodes()) {
-  ReactDOM.hydrateRoot(
-    rootElement,
-    <React.StrictMode>
-      <MainRouter />
-    </React.StrictMode>
-  );
-} else {
-  root.render(
-    <React.StrictMode>
-      <MainRouter />
-    </React.StrictMode>
-  );
-}
+root.render(<MainRouter />);
