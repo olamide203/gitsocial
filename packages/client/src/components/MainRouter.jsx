@@ -15,44 +15,36 @@ import Search from "../pages/Search";
 
 function MainRouter() {
   return (
-    <React.StrictMode>
-      <Router>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route path="/" element={<ProtectedRoutes />}>
-              <Route path="dashboard" element={<Dashboard />} />
-              <Route
-                path="repos"
-                element={<ReRouter path="repos" defaultRoute="personal" />}
-              >
-                <Route
-                  path="personal"
-                  element={<Repositories type="repos" />}
-                />
-                <Route
-                  path="starred"
-                  element={<Repositories type="starred" />}
-                />
-              </Route>
-              <Route
-                path="people"
-                element={<ReRouter path="people" defaultRoute="followers" />}
-              >
-                <Route path="following" element={<Following />} />
-                <Route path="followers" element={<Followers />} />
-              </Route>
-              <Route path="search" element={<Search />} />
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route path="/" element={<ProtectedRoutes />}>
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route
+              path="repos"
+              element={<ReRouter path="repos" defaultRoute="personal" />}
+            >
+              <Route path="personal" element={<Repositories type="repos" />} />
+              <Route path="starred" element={<Repositories type="starred" />} />
             </Route>
-            <Route path="/" element={<PublicRoutes />}>
-              <Route index element={<LandingPage />} />
-              <Route path="signup" element={<Signup />} />
-              <Route path="login" element={<Signup />} />
+            <Route
+              path="people"
+              element={<ReRouter path="people" defaultRoute="followers" />}
+            >
+              <Route path="following" element={<Following />} />
+              <Route path="followers" element={<Followers />} />
             </Route>
-            <Route path="*" element={<NotFound />} />
+            <Route path="search" element={<Search />} />
           </Route>
-        </Routes>
-      </Router>
-    </React.StrictMode>
+          <Route path="/" element={<PublicRoutes />}>
+            <Route index element={<LandingPage />} />
+            <Route path="signup" element={<Signup />} />
+            <Route path="login" element={<Signup />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </Router>
   );
 }
 

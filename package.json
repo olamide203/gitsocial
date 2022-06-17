@@ -9,7 +9,7 @@
   "scripts": {
     "dev:server": "yarn workspace @gittz/backend dev",
     "dev:client": "yarn workspace @gittz/client dev",
-    "build:client": "yarn workspace @gittz/client build",
+    "build:client": "yarn workspace @gittz/client build & yarn workspace @gittz/client postbuild",
     "build:css": "yarn workspace @gittz/client build:css",
     "dev:css": "yarn workspace @gittz/client dev:css",
     "start": "yarn workspace @gittz/backend start",
