@@ -9,9 +9,6 @@
     "dev:css": "npx tailwindcss -i ./src/index.css -o ./dist/index.css --watch",
     "build:css": "npx tailwindcss -i ./src/index.css -o ./dist/index.css"
   },
-  "reactSnap": {
-    "source": "dist"
-  },
   "dependencies": {
     "@radix-ui/react-icons": "^1.1.1",
     "@radix-ui/react-label": "^0.1.5",
