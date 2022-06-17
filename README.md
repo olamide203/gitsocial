@@ -42,10 +42,11 @@ yarn run dev
 
 ## Author
 👤 **Olamide Atitebi**
--[website](https://github.com/olamide203)
--[twitter](https://twitter.com/Olamide_farouq)
--[github](https://github.com/olamide203)
 
+- Website: [olamide Atitebi](https://github.com/olamide203)
+- Twitter: [@olamide_farouq](https://twitter.com/olamide_farouq)
+- Github: [@olamide203](https://github.com/olamide203)
+- 
 ## Support
 
 Give this project a ⭐️ if it has helped you!
