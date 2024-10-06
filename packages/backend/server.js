@@ -9,11 +9,9 @@ const rateLimit = require("express-rate-limit");
 const hpp = require("hpp");
 const cors = require("cors");
 const errorHandler = require("./middlewares/error");
-// const connectDB = require("./config/db");
 
 // configure evironment variables
-require("dotenv").config({ path: "./config/config.env" });
-
+require("dotenv");
 // load routers
 const indexRouter = require("./routes/index");
 const userRouter = require("./routes/user");
@@ -78,7 +76,7 @@ app.set("trust proxy", 1);
 // listen on port
 const server = app.listen(process.env.PORT, () => {
   console.log(
-    `sever running in ${process.env.NODE_ENV} mode on ${process.env.SERVER_URL}`
+    `sever running in ${process.env.NODE_ENV} mode on ${process.env.SERVER_URL}`,
   );
 });
 

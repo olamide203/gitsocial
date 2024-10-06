@@ -14,7 +14,7 @@ router.get(
     const appAuth = createOAuthAppAuth({
       clientType: "oauth-app",
       clientId: process.env.CLIENT_ID,
-      clientSecret: process.env.CLIENT_SECRETE,
+      clientSecret: process.env.CLIENT_SECRET,
     });
     // exchange code for access token
     const userAuth = await appAuth({
@@ -24,26 +24,26 @@ router.get(
     });
     const authentication = await userAuth();
     const { token } = authentication;
-    const encryptedToken = encryptToken(
-      token,
-      process.env.SECRETE_KEY
-    ).toString("utf8");
+    console.log(process.env.SECRET_KEY);
+    const encryptedToken = encryptToken(token, process.env.SECRET_KEY).toString(
+      "utf8",
+    );
     res.cookie("session_id", encryptedToken, {
       maxAge: 7 * 24 * 60 * 60 * 1000,
       httpOnly: true,
       sameSite: "strict",
     });
     res.redirect(`${process.env.CLIENT_URL}/dashboard`);
-  })
+  }),
 );
 
 router.get(
   "/github",
   asyncHandler((req, res, next) => {
     res.redirect(
-      `https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}&scope=user%20public_repo`
+      `https://github.com/login/oauth/authorize?client_id=${process.env.CLIENT_ID}&scope=user%20public_repo`,
     );
-  })
+  }),
 );
 
 router.get(
@@ -51,14 +51,14 @@ router.get(
   asyncHandler(async (req, res, next) => {
     // get the encrypted toke from the req cookies
     const encryptedToken = req.cookies.session_id;
-    const token = decryptToken(encryptedToken, process.env.SECRETE_KEY);
+    const token = decryptToken(encryptedToken, process.env.SECRET_KEY);
 
     // app authentication
     const appOctokit = new Octokit({
       authStrategy: createOAuthAppAuth,
       auth: {
         clientId: process.env.CLIENT_ID,
-        clientSecret: process.env.CLIENT_SECRETE,
+        clientSecret: process.env.CLIENT_SECRET,
       },
     });
 
@@ -73,7 +73,7 @@ router.get(
     });
     // redirect user to home page
     res.redirect(`${process.env.CLIENT_URL}`);
-  })
+  }),
 );
 
 module.exports = router;

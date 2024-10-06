@@ -17,7 +17,7 @@ function Dashboard() {
   return (
     <div className=" text-white dashboard h-screen w-full overflow-y-scroll">
       {/* <h1 className="text-3xl font-bold">overview</h1> */}
-      <div className="grid grid-cols-auto-fit sm:grid-cols-auto-fit-2 gap-10 p-4 sm:p-10 w-full">
+      <div className="grid grid-cols-auto-fit sm:grid-cols-auto-fit-2 gap-10 p-4 sm:p-10 w-full max-w-screen-xl">
         <div className=" grid grid-cols-1 sm:grid-cols-auto gap-x-4 bg-neutral rounded-xl items-center justify-center self-center justify-self-center max-w-[32rem] h-full lg:justify-self-end w-full p-5">
           <div className="avatar online aspect-square mx-auto my-3 max-w-[10rem]">
             <div className=" rounded-full">
@@ -74,7 +74,7 @@ function Dashboard() {
           />
         </div>
         <div
-          className="col-span-2 lg:grid items-center justify-center p-10 bg-neutral rounded-xl max-w-[66rem] justify-self-center font-sans hide "
+          className="col-span-2 lg:grid items-center justify-center p-10 bg-neutral rounded-xl w-fit justify-self-center font-sans hide "
           onMouseEnter={() => showTooltip(true)}
           onMouseLeave={() => {
             showTooltip(false);
@@ -86,11 +86,8 @@ function Dashboard() {
             year={new Date().getFullYear()}
             children={tooltip && <ReactTooltip html eventOff="click" />}
             theme={{
-              level0: "#d1d5db",
-              level1: "#60a5fa",
-              level2: "#3b82f6",
-              level3: "#2563eb",
-              level4: "#1e40af",
+              light: ["#d1d5db", "#60a5fa", "#3b82f6", "#2563eb", "#1e40af"],
+              dark: ["#d1d5db", "#60a5fa", "#3b82f6", "#2563eb", "#1e40af"],
             }}
             blockSize={14}
           />

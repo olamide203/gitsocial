@@ -6,6 +6,7 @@ import MetaDecorator from "./components/MetaDecorator";
 import metadata from "./data/metadata.json";
 import { Outlet } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { Provider as TooltipProvider } from "@radix-ui/react-tooltip";
 
 function App() {
   const [width, height] = useWindowSize();
@@ -28,23 +29,25 @@ function App() {
         description={metadata.description}
         imageURL="https://gittz.netify.live/images/meta.png"
       />
-      <Header
-        pages={["login", "signup"]}
-        toggleMenu={toggleMenu}
-        isVisible={isVisible}
-        closeMenu={closeMenu}
-      />
-      {isVisible && (
-        <div
-          className="absolute inset-y-0 inset-x-0 bg-gradient-to-l from-transparent to-transparent backdrop-blur h-full min-w-full z-20"
-          onClick={closeMenu}
-        ></div>
-      )}
-      <main className="w-screen h-max">
-        <Outlet />
-      </main>
+      <TooltipProvider>
+        <Header
+          pages={["login", "signup"]}
+          toggleMenu={toggleMenu}
+          isVisible={isVisible}
+          closeMenu={closeMenu}
+        />
+        {isVisible && (
+          <div
+            className="absolute inset-y-0 inset-x-0 bg-gradient-to-l from-transparent to-transparent backdrop-blur h-full min-w-full z-20"
+            onClick={closeMenu}
+          ></div>
+        )}
+        <main className="w-screen h-max">
+          <Outlet />
+        </main>
 
-      <Footer />
+        <Footer />
+      </TooltipProvider>
     </HelmetProvider>
   );
 }
