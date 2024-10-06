@@ -1,10 +1,9 @@
-const { asyncHandler } = require("./async");
-const { ErrorResponse } = require("../utils/ErrorResponse");
-const { decryptToken } = require("../utils/cryptograph");
-const { request } = require("express");
+import { asyncHandler } from "./async.js";
+import { ErrorResponse } from "../utils/ErrorResponse.js";
+import { decryptToken } from "../utils/cryptograph.js";
 
 //extract access token from cookie
-exports.extractToken = asyncHandler(async (req, res, next) => {
+export const extractToken = asyncHandler(async (req, res, next) => {
   let token = req.cookies.session_id;
   if (!token) {
     return next(new ErrorResponse("Not Authorized to access this route", 401));

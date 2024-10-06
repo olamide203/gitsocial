@@ -1,6 +1,6 @@
-const { Router } = require("express");
-const { extractToken } = require("../middlewares/auth");
-const { getByUsername } = require("../controllers/users");
+import { Router } from "express";
+import { extractToken } from "../middlewares/auth.js";
+import { getByUsername } from "../controllers/users.js";
 
 const router = Router();
 
@@ -8,4 +8,4 @@ router.use("/", extractToken);
 
 router.get("/:username", getByUsername);
 
-module.exports = router;
+export default router;

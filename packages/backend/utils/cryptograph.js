@@ -1,7 +1,6 @@
-const { createCipheriv, createDecipheriv, randomBytes } = require("crypto");
-require("dotenv").config({ path: "../config/config.env" });
+import { createCipheriv, createDecipheriv, randomBytes } from "crypto";
 
-exports.encryptToken = (token, secretKey) => {
+export const encryptToken = (token, secretKey) => {
   // The initial vector used for encryption and decryption
   const iv = randomBytes(12);
 
@@ -18,7 +17,7 @@ exports.encryptToken = (token, secretKey) => {
   return encryptedToken.toString("base64");
 };
 
-exports.decryptToken = (encryptedToken, SecretKey) => {
+export const decryptToken = (encryptedToken, SecretKey) => {
   const tokenBuffer = Buffer.from(encryptedToken, "base64");
   const key = Buffer.from(SecretKey, "hex");
   // retrieve iv from token

@@ -1,11 +1,12 @@
-const { Router } = require("express");
-const { asyncHandler } = require("../middlewares/async");
-const { encryptToken, decryptToken } = require("../utils/cryptograph");
-const { Octokit } = require("@octokit/rest");
-const {
+import { Router } from "express";
+import { asyncHandler } from "../middlewares/async.js";
+import { encryptToken, decryptToken } from "../utils/cryptograph.js";
+import { Octokit } from "@octokit/rest";
+import {
   createOAuthAppAuth,
   createOAuthUserAuth,
-} = require("@octokit/auth-oauth-app");
+} from "@octokit/auth-oauth-app";
+
 const router = Router();
 
 router.get(
@@ -24,7 +25,6 @@ router.get(
     });
     const authentication = await userAuth();
     const { token } = authentication;
-    console.log(process.env.SECRET_KEY);
     const encryptedToken = encryptToken(token, process.env.SECRET_KEY).toString(
       "utf8",
     );
@@ -76,4 +76,4 @@ router.get(
   }),
 );
 
-module.exports = router;
+export default router;

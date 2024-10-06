@@ -1,22 +1,23 @@
-const express = require("express");
-const path = require("path");
-const morgan = require("morgan");
-const cookieParser = require("cookie-parser");
-// const mongoSanitize = require("express-mongo-sanitize");
-const helmet = require("helmet");
-const xss = require("xss-clean");
-const rateLimit = require("express-rate-limit");
-const hpp = require("hpp");
-const cors = require("cors");
-const errorHandler = require("./middlewares/error");
+import express from "express";
+import path, { dirname } from "path";
+import morgan from "morgan";
+import cookieParser from "cookie-parser";
+// import mongoSanitize from 'express-mongo-sanitize';
+import helmet from "helmet";
+import xss from "xss-clean";
+import rateLimit from "express-rate-limit";
+import hpp from "hpp";
+import cors from "cors";
+import { errorHandler } from "./middlewares/error.js";
 
-// configure evironment variables
-require("dotenv");
+// Configure environment variables
+import "dotenv/config";
 // load routers
-const indexRouter = require("./routes/index");
-const userRouter = require("./routes/user");
-const usersRouter = require("./routes/users");
-const searchRouter = require("./routes/search");
+import indexRouter from "./routes/index.js";
+import userRouter from "./routes/user.js";
+import usersRouter from "./routes/users.js";
+import searchRouter from "./routes/search.js";
+import { fileURLToPath } from "url";
 
 // create instance of express
 const app = express();
@@ -53,6 +54,8 @@ app.use(hpp());
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 
 // set static folder
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 app.use(express.static(path.join(__dirname, "public")));
 
 // Dev logging middleware
