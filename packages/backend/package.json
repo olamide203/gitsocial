@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server",
-    "start": "node server.js"
+    "dev": "nodemon ./api/index.js",
+    "start": "node ./api/index.js"
   },
   "author": "Olamide Atitebi",
   "license": "MIT",
