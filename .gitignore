@@ -16,7 +16,7 @@ dist-ssr
 packages/backend/config/config.env
 packages/backend/public/
 packages/backend/uploads/
-config.env
+.env
 
 .pnp.*
 .yarn/*
