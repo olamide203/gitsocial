@@ -4,7 +4,7 @@ import { FaGithub, FaTwitter } from "react-icons/fa";
 import { BsPeople } from "react-icons/bs";
 import { ImBooks } from "react-icons/im";
 import GithubCalender from "react-github-calendar";
-import ReactTooltip from "react-tooltip";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 import { AiOutlineStar } from "react-icons/ai";
 import { RiBuilding2Line } from "react-icons/ri";
 import StatItem from "../components/Dashboard/StatItem";

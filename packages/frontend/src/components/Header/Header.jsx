@@ -97,9 +97,5 @@ function Header({ toggleMenu, isVisible, closeMenu }) {
     </StyledHeader>
   );
 }
-// setting default props
-Header.defaultProps = {
-  text: "Hi there!",
-};
 
 export default Header;

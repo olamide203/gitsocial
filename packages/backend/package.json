@@ -1,5 +1,5 @@
 {
-  "name": "@gittz/backend",
+  "name": "backend",
   "version": "1.0.0",
   "description": "A strarter project for node-express backend app",
   "main": "index.js",

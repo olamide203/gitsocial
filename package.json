@@ -1,21 +1,15 @@
 {
-  "name": "gittz",
+  "name": "gitsocial",
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "dev:server": "yarn workspace @gittz/backend dev",
-    "dev:client": "yarn workspace @gittz/client dev",
-    "build:client": "yarn workspace @gittz/client build",
-    "build:css": "yarn workspace @gittz/client build:css",
-    "dev:css": "yarn workspace @gittz/client dev:css",
-    "start": "yarn workspace @gittz/backend start",
-    "dev": "yarn run dev:server & yarn run dev:client & yarn dev:css"
+    "dev:backend": "pnpm dlx lerna run dev --scope=backend",
+    "dev:frontend": "pnpm dlx lerna run dev --scope=frontend",
+    "dev": "pnpm dlx lerna run dev",
+    "build:frontend": "pnpm dlx lerna run build --scope=frontend"
   },
-  "dependencies": {
-    "react-github-calender": "^1.1.0"
+  "devDependencies": {
+    "lerna": "^8.1.8"
   }
 }
