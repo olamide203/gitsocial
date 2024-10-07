@@ -32,8 +32,9 @@ router.get(
       maxAge: 7 * 24 * 60 * 60 * 1000,
       httpOnly: true,
       sameSite: "strict",
+      domain: process.env.COOKIE_DOMAIN,
     });
-    res.redirect(`http://localhost:3000/dashboard`);
+    res.redirect(`${process.env.CLIENT_URL}/dashboard`);
   }),
 );
 
