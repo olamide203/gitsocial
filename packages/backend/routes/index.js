@@ -31,7 +31,8 @@ router.get(
     res.cookie("session_id", encryptedToken, {
       maxAge: 7 * 24 * 60 * 60 * 1000,
       httpOnly: true,
-      sameSite: "strict",
+      sameSite: "lax",
+      secure: true,
     });
     res.redirect(`${process.env.CLIENT_URL}/dashboard`);
   }),
