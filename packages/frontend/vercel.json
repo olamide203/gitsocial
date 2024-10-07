@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://gitsocial-cajm.vercel.app/api/v1/:path*"
+      "destination": "https://api.gitsocial.net/api/v1/:path*"
     },
     {
       "source": "/(.*)",
