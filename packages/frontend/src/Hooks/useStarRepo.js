@@ -11,8 +11,8 @@ export default function useStarRepo(data, repo) {
   // send a request to update the dat
   // trigger a revalidation (refetch) to make sure our local data is correct
   mutate(
-    `/user/starred/${user.data.login}/${repo}`,
-    fetcher(`/user/starred/${user.data.login}/${repo}`, {
+    `/api/user/starred/${user.data.login}/${repo}`,
+    fetcher(`/api/user/starred/${user.data.login}/${repo}`, {
       method: "PUT",
       credentials: "include",
     }),

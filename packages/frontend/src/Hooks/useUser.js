@@ -3,7 +3,7 @@ import fetcher from "../libs/fetcher";
 
 export default function useUser() {
   const { data, error } = useSWR(
-    ["/user", { method: "GET", credentials: "include" }],
+    ["/api/user", { method: "GET", credentials: "include" }],
     fetcher,
     {
       onErrorRetry: (error, key, config, revalidate, { retryCount }) => {

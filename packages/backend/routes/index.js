@@ -38,7 +38,7 @@ router.get(
 
     if (process.env.NODE_ENV === "production") {
       cookieAttributes.secure = true;
-      cookieAttributes.sameSite = "none";
+      cookieAttributes.sameSite = "lax";
     }
     res.cookie("session_id", encryptedToken, cookieAttributes);
     res.redirect(`${process.env.CLIENT_URL}/dashboard`);

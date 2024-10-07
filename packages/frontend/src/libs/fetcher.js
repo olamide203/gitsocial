@@ -1,11 +1,5 @@
 export default async function fetcher([url, token], init) {
-  const absolutePathRegex = /^(www\.)?(https?:\/\/).*/;
-  const absoluteURL = absolutePathRegex.test(url)
-    ? url
-    : `${import.meta.env.VITE_BACKEND_URL}${url}`;
-
-  console.log(absoluteURL);
-  const res = await fetch(absoluteURL, init);
+  const res = await fetch(url, init);
   // if status code is 204, return
   if (res.status === 204) {
     return;
