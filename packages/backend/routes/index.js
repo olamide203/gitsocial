@@ -28,12 +28,19 @@ router.get(
     const encryptedToken = encryptToken(token, process.env.SECRET_KEY).toString(
       "utf8",
     );
-    res.cookie("session_id", encryptedToken, {
+    const cookieAttributes = {
       maxAge: 7 * 24 * 60 * 60 * 1000,
       httpOnly: true,
       sameSite: "strict",
+      secure: false,
       domain: process.env.COOKIE_DOMAIN,
-    });
+    };
+
+    if (process.env.NODE_ENV === "production") {
+      cookieAttributes.secure = true;
+      cookieAttributes.sameSite = "none";
+    }
+    res.cookie("session_id", encryptedToken, cookieAttributes);
     res.redirect(`${process.env.CLIENT_URL}/dashboard`);
   }),
 );
