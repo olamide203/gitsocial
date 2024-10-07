@@ -15,7 +15,7 @@ function Signup() {
       <div className="grid items-center justify-items-center justify-self-center self-start mt-12 bg-neutral rounded-xl relative w-72 sm:w-96 h-3/5 mx-auto grid-rows-4 gap-y-3 py-3">
         <div className="grid self-center justify-self-center bg-[url(/images/login.svg)] bg-contain bg-center bg-no-repeat w-full h-full row-span-3"></div>
         <a
-          href={`${import.meta.env.VITE_BACKEND_BASE_URL}/auth/github`}
+          href={`${import.meta.env.VITE_BACKEND_URL}/auth/github`}
           className="self-start bg-sky-600 hover:text-neutral px-8 sm:px-11 py-3 cursor-pointer rounded-full text-white shadow-xl active:scale-95 transition-all"
         >
           <FaGithub className="inline mx-2 sm:text-3xl" />

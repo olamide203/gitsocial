@@ -12,7 +12,7 @@ export default ({ mode }) => {
       https: false,
       proxy: {
         "/api": {
-          target: env.VITE_BACKEND_BASE_URL,
+          target: "https://api.gitsocial.net/api/v1",
           changeOrigin: true,
           followRedirects: false,
           rewrite: (path) => path.replace(/^\/api/, ""),

@@ -33,7 +33,7 @@ router.get(
       httpOnly: true,
       sameSite: "strict",
     });
-    res.redirect(`${process.env.CLIENT_URL}/dashboard`);
+    res.redirect(`http://localhost:3000/dashboard`);
   }),
 );
 

@@ -1,10 +1,6 @@
 {
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "https://api.gitsocial.net/api/v1/:path*"
-    },
-    {
       "source": "/(.*)",
       "destination": "/"
     }
