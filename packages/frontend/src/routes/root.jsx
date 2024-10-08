@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import useWindowSize from "./Hooks/useWindowSize";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer";
-import MetaDecorator from "./components/MetaDecorator";
-import metadata from "./data/metadata.json";
+import useWindowSize from "../Hooks/useWindowSize";
+import Header from "../components/Header/Header";
+import MetaDecorator from "../components/MetaDecorator";
+import metadata from "../data/metadata.json";
 import { Outlet } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { Provider as TooltipProvider } from "@radix-ui/react-tooltip";
@@ -45,8 +44,6 @@ function App() {
         <main className="w-screen h-max">
           <Outlet />
         </main>
-
-        <Footer />
       </TooltipProvider>
     </HelmetProvider>
   );

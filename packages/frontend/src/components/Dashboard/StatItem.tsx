@@ -1,3 +1,5 @@
+import React from "react";
+
 function StatItem({ icon, title, value }) {
   return (
     <div className="h-28 grid bg-neutral grid-cols-auto p-3 rounded-2xl shadow-xl hover:bg-gray-800 cursor-pointer">

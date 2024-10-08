@@ -4,17 +4,17 @@ import {
   Provider as ToastProvider,
   Viewport as ToastViewport,
 } from "@radix-ui/react-toast";
-import Sidebar from "./Sidebar/Sidebar";
-import fetcher from "../libs/fetcher";
-import useUser from "../Hooks/useUser";
-import Skeleton from "./Dashboard/Skeleton";
-import { SearchProvider } from "../context/SearchContext";
+import Sidebar from "~/components/Sidebar/Sidebar";
+import fetcher from "~/libs/fetcher";
+import useUser from "~/Hooks/useUser";
+import Skeleton from "~/components/Dashboard/Skeleton";
+import { SearchProvider } from "~/context/SearchContext";
 
 const options = {
   revalidateOnFocus: false,
   fetcher,
 };
-const ProtectedRoutes = () => {
+const DashboardLayout = () => {
   const { loading, loggedOut, user } = useUser();
   if (loggedOut) {
     return <Navigate to="/login" />;
@@ -43,4 +43,4 @@ const ProtectedRoutes = () => {
   );
 };
 
-export default ProtectedRoutes;
+export default DashboardLayout;
