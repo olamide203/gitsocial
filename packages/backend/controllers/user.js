@@ -36,17 +36,6 @@ export const getUser = asyncHandler(async (req, res, next) => {
 // ACCESS: Private
 
 export const getUserRepos = asyncHandler(async (req, res, next) => {
-  // // create new instance of octokit with users auth token
-  // const octokit = new Octokit({ auth: req.token });
-
-  // // get current logged in users repos
-  // const result = await octokit.rest.repos.listForAuthenticatedUser({
-  //     page: 1,
-  //     per_page: 30,
-  //     sort: req.query.sort || "created",
-  //     direction: req.query.direction || "desc",
-  //     type: "all",
-  // });
   const { data, pagination } = res.advancedResult;
   const repos = data.reduce((acc, curr) => {
     acc.push({
@@ -107,18 +96,19 @@ export const starRepoForAuthenticatedUser = asyncHandler(
     const octokit = new Octokit({ auth: req.token });
     // destructure  owner and repo from the req parameters
     const { owner, repo } = req.params;
-    let status;
     try {
-      const result = await octokit.rest.activity.starRepoForAuthenticatedUser({
+      await octokit.rest.activity.starRepoForAuthenticatedUser({
         owner,
         repo,
       });
-      status = result.status;
+      res.status(204).send();
     } catch (error) {
-      status = error.response.status;
+      const status = error.response?.status || 500;
+      res.status(status).json({
+        message:
+          error.message || "An error occured while starring the repository",
+      });
     }
-    console.log(status);
-    res.status(status).send();
   },
 );
 
@@ -132,20 +122,19 @@ export const unstarRepoForAuthenticatedUser = asyncHandler(
     const octokit = new Octokit({ auth: req.token });
     // destructure  owner and repo from the req parameters
     const { owner, repo } = req.params;
-    let status;
     try {
-      const result = await octokit.rest.activity.unstarRepoForAuthenticatedUser(
-        {
-          owner,
-          repo,
-        },
-      );
-      status = result.status;
+      await octokit.rest.activity.unstarRepoForAuthenticatedUser({
+        owner,
+        repo,
+      });
+      res.status(204).send();
     } catch (error) {
-      status = error.response.status;
+      const status = error.response?.status || 500;
+      res.status(status).json({
+        message:
+          error.message || "An error occured while unstarring the repository",
+      });
     }
-    console.log(status);
-    res.status(status).send();
   },
 );
 
@@ -184,18 +173,18 @@ export const listFollowedByAuthenticated = asyncHandler((req, res, next) => {
 export const followForAuthenticatedUser = asyncHandler(
   async (req, res, next) => {
     const octokit = new Octokit({ auth: req.token });
-    let status;
     try {
-      result = await octokit.rest.users.follow({
+      await octokit.rest.users.follow({
         username: req.params.username,
       });
-      status = result.status;
+      res.status(204).send();
     } catch (error) {
       console.log(error);
-      status = error.response.status;
+      status = error.response?.status || 500;
+      res.status(status).json({
+        message: error.message || "An error occured while following user",
+      });
     }
-    console.log(result);
-    res.status(status).send();
   },
 );
 
@@ -206,17 +195,17 @@ export const followForAuthenticatedUser = asyncHandler(
 export const unfollowForAuthenticatedUser = asyncHandler(
   async (req, res, next) => {
     const octokit = new Octokit({ auth: req.token });
-    let status;
     try {
-      const result = await octokit.rest.users.unfollow({
+      await octokit.rest.users.unfollow({
         username: req.params.username,
       });
-      status = result.status;
+      res.status(204).send();
     } catch (error) {
-      console.log(error);
-      status = error.response.status;
+      const status = error.response?.status || 500;
+      res.status(status).json({
+        message: error.message || "An error occured while unfollowing user",
+      });
     }
-    res.status(status).send();
   },
 );
 
