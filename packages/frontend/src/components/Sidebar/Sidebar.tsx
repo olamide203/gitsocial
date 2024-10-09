@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
 import items from "../../data/sidebar.json";
 import SidebarItem from "./SidebarItem";
-import useWindowSize from "../../Hooks/useWindowSize";
-import useDebounce from "../../Hooks/useDebounce";
+import useWindowSize from "../../hooks/useWindowSize";
+import useDebounce from "../../hooks/useDebounce";
 
 function Sidebar() {
   const [sidebarExpanded, setSidebarExpanded] = useState(true);

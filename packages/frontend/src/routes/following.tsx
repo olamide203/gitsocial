@@ -1,16 +1,13 @@
-import React from "react";
 import useSWR from "swr";
 import User from "../components/User/User";
+import { useFollowees } from "~/hooks/useFollowees";
 
 function Following() {
-  const { data: following, error } = useSWR([
-    "/api/user/following",
-    { method: "GET", credentials: "include" },
-  ]);
+  const { data: followees, error } = useFollowees();
   return (
     <div className="grid gap-4 grid-cols-1 sm:grid-cols-auto-fill-2 md:grid-cols-auto-fill grid-flow-row-dense">
-      {following &&
-        following.data.map((profile, index) => (
+      {followees &&
+        followees.data.map((profile, index) => (
           <User username={profile.login} key={index} />
         ))}
     </div>

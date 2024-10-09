@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { FaGithub } from "react-icons/fa";
-import useUser from "../Hooks/useUser";
+import { useUser } from "../hooks/useUser";
 import { useNavigate } from "react-router-dom";
 function Signup() {
-  const { loggedOut } = useUser();
+  const { isError } = useUser();
   const navigate = useNavigate();
   useEffect(() => {
-    if (!loggedOut) {
+    if (!isError) {
       navigate("../dashboard");
     }
-  }, [loggedOut]);
+  }, [isError]);
   return (
     <div className="grid h-screen">
       <div className="grid items-center justify-items-center justify-self-center self-start mt-12 bg-neutral rounded-xl relative w-72 sm:w-96 h-3/5 mx-auto grid-rows-4 gap-y-3 py-3">

@@ -1,87 +1,22 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { Link2Icon } from "@radix-ui/react-icons";
 import { FaGithub } from "react-icons/fa";
 import { BsCheckCircle, BsTwitter } from "react-icons/bs";
-import { CgCloseO } from "react-icons/cg";
-import useSWRImmutable, { useSWRConfig } from "swr";
-import useCheckRepoIsStarred from "../../Hooks/useCheckRepoIsStarred";
-import fetcher from "../../libs/fetcher";
-import Toast from "./Toast";
+import { useCheckRepoIsStarred } from "~/hooks/useCheckRepoIsStarred";
+import { useToggleRepo } from "~/hooks/useToggleRepo";
 import Tooltip from "../Tooltip";
+import { useLanguageColors } from "~/hooks/useLanguageColors";
 
-function Repository({ item, mutateKey }) {
-  const { mutate } = useSWRConfig();
-  const [open, setOpen] = useState(false);
-  const [message, setMessage] = useState({ content: "", color: "" });
+function Repository({ item }) {
+  const toggleRepo = useToggleRepo(item);
   const timerRef = useRef(0);
   useEffect(() => {
     return () => clearTimeout(timerRef.current);
   }, []);
-
-  // fetch language colors
-  const { data: languageColors, error } = useSWRImmutable(
-    "https://raw.githubusercontent.com/ozh/github-colors/master/colors.json"
-  );
-
-  // check if repo is starred
-  const { isStarred, mutate: mutateStarred } = useCheckRepoIsStarred(item);
-
-  // console.log(checkRepoIsStarred.status);
-
-  const showToast = (message) => {
-    // set open state to false
-    setOpen(false);
-    // update the toast message
-    setMessage(message);
-    // set open state to true
-    window.clearTimeout(timerRef.current);
-    timerRef.current = window.setTimeout(() => {
-      setOpen(true);
-    }, 100);
-  };
-
-  const toggleStarred = async () => {
-    let init, value;
-    let url = `/user/starred/${item.owner.login}/${item.name}`;
-    if (!isStarred) {
-      init = {
-        method: "PUT",
-        credentials: "include",
-      };
-      value = true;
-    } else {
-      init = {
-        method: "DELETE",
-        credentials: "include",
-      };
-      value = false;
-    }
-    try {
-      // send request to the api to update the data
-      await fetcher(url, init);
-      // update the local data immediately and revalidate
-      await mutate(mutateKey);
-      await mutateStarred({ isStarred: value });
-      // show toast
-      showToast({
-        content: (
-          <>
-            <BsCheckCircle className="inline text-lg" /> '{item.name}' has been{" "}
-            {`${value ? "starred" : "unstarred"}`}{" "}
-          </>
-        ),
-        color: "green",
-      });
-    } catch (error) {
-      showToast({
-        content: (
-          <>
-            <CgCloseO className="inline text-lg" /> Network error occured !
-          </>
-        ),
-        color: "red",
-      });
-    }
+  const { data: languageColors } = useLanguageColors();
+  const { isStarred } = useCheckRepoIsStarred(item);
+  const toggleStarred = () => {
+    toggleRepo.mutate({ isStarred: !isStarred });
   };
 
   const shareRepo = () => {
@@ -90,7 +25,7 @@ function Repository({ item, mutateKey }) {
         item.name
       } 🎉 🚀\n\n${item.description}\n\n${
         item.homepage ? item.homepage : ""
-      }\n ${item.html_url}\n\n&hashtags=${item.topics.toString()}`
+      }\n ${item.html_url}\n\n&hashtags=${item.topics.toString()}`,
     );
     window.open(url, "_blank");
   };
@@ -177,12 +112,6 @@ function Repository({ item, mutateKey }) {
           </span>
         </div>
       </div>
-      <Toast
-        content={message.content}
-        open={open}
-        onOpenChange={setOpen}
-        color={message.color}
-      />
     </div>
   );
 }

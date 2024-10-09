@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import useWindowSize from "../Hooks/useWindowSize";
+import { useState, useEffect } from "react";
+import useWindowSize from "../hooks/useWindowSize";
 import Header from "../components/Header/Header";
 import MetaDecorator from "../components/MetaDecorator";
 import metadata from "../data/metadata.json";

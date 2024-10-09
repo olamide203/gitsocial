@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 import DashboardLayout from "./routes/dashboard/layout";
+import { loader as dashboardLoader } from "~/routes/dashboard/loader";
 import PublicRoutes from "./components/PublicRoutes";
 import Root from "./routes/root";
 import Dashboard from "./routes/dashboard";
@@ -17,6 +19,14 @@ import Search from "./routes/search";
 
 import "./index.css";
 
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 3,
+    },
+  },
+});
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,6 +34,7 @@ const router = createBrowserRouter([
     children: [
       {
         element: <DashboardLayout />,
+        loader: dashboardLoader(queryClient),
         children: [
           {
             path: "dashboard",
@@ -90,6 +101,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>,
 );

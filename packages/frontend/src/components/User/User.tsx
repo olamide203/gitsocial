@@ -1,14 +1,10 @@
-import React from "react";
 import { FaGithub, FaTwitter } from "react-icons/fa";
-import useSWR from "swr";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useUserByUsername } from "~/hooks/useUserByUsername";
 
 function User({ username }) {
-  const { data: user, error } = useSWR([
-    `/api/users/${username}`,
-    { method: "GET", credentials: "include" },
-  ]);
+  const { data: user, error } = useUserByUsername(username);
   const profile = user && user.data;
   return (
     <>

@@ -1,10 +1,7 @@
-import React from "react";
 import { BsFillLightningChargeFill } from "react-icons/bs";
-import { AiOutlineMenu } from "react-icons/ai";
-import { IoMdClose } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import { styled } from "@stitches/react";
-import useUser from "../../Hooks/useUser";
+import { useUser } from "../../hooks/useUser";
 import Tooltip from "../Tooltip";
 import Avatar from "./Avatar";
 
@@ -27,7 +24,7 @@ const StyledHeader = styled("header", {
 });
 
 function Header({ toggleMenu, isVisible, closeMenu }) {
-  const { user } = useUser();
+  const { data: user } = useUser();
   return (
     <StyledHeader>
       <div className="logo bg-sky-700 w-20 sm:w-52 h-full mx-auto">

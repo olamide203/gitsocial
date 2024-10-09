@@ -1,12 +1,8 @@
-import React from "react";
-import useSWR from "swr";
+import { useFollowers } from "~/hooks/useFollowers";
 import User from "../components/User/User";
 
 export default () => {
-  const { data: followers, error } = useSWR([
-    "/api/user/followers",
-    { method: "GET", credentials: "include" },
-  ]);
+  const { data: followers, error } = useFollowers();
   return (
     <div className="grid gap-4 grid-cols-1 sm:grid-cols-auto-fill-2 md:grid-cols-auto-fill grid-flow-row-dense">
       {followers &&

@@ -8,10 +8,10 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 import { AiOutlineStar } from "react-icons/ai";
 import { RiBuilding2Line } from "react-icons/ri";
 import StatItem from "~/components/Dashboard/StatItem";
-import useUser from "~/Hooks/useUser";
+import { useUser } from "~/hooks/useUser";
 
 function Dashboard() {
-  const { user } = useUser();
+  const { data: user } = useUser();
   const [tooltip, showTooltip] = useState(false);
   const profile = user.data;
   return (
